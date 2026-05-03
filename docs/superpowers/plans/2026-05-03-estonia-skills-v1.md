@@ -240,7 +240,7 @@ git commit -m "Add Python tooling (pyproject, pytest, dev deps)"
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "estonia-skills",
   "owner": { "name": "Dmitri Mihhailov" },
   "plugins": [
