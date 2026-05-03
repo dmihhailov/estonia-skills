@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "estonia-skills",
+  "owner": { "name": "Dmitri Mihhailov" },
+  "plugins": [
+    {
+      "name": "estonia-skills",
+      "source": "./",
+      "description": "Modular Claude skills for Estonian bureaucracy",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["estonia", "civic", "tax", "e-residency"]
+    }
+  ]
+}
