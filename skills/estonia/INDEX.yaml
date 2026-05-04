@@ -1,4 +1,33 @@
 skills:
+- name: ou-open-e-resident
+  description: 'Walks an e-Resident through opening a private limited company (osaühing,
+    OÜ)
+
+    remotely using the e-Residency digital ID. Use when the user mentions:
+
+    "open OÜ", "open Estonian company", "register OÜ", "e-Residency company",
+
+    "ariregister", "Company Registration Portal", "start a business in Estonia
+
+    as a non-resident". Always re-fetches the current procedure from
+
+    e-resident.gov.ee — never quotes cached fees or share-capital minimums.'
+  metadata:
+    audience:
+    - e-resident
+    - non-resident-founder
+    life_event: starting-business
+    service_domain: business
+    cadence: one-off
+    difficulty: self-serve
+    auth_required:
+    - e-residency-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.e-resident.gov.ee/start-a-company/
+    - https://ariregister.rik.ee/eng/application/start
+    last_verified: '2026-05-03'
+    version: 0.1.0
 - name: tax-filing-individual
   description: 'Walks an Estonian resident or citizen through filing the annual personal
 

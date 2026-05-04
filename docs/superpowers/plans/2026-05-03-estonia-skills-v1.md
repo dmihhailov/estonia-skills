@@ -1254,9 +1254,17 @@ git commit -m "Add tax-filing-individual skill"
 
 Use WebFetch (or browser) on:
 - `https://www.e-resident.gov.ee/start-a-company/`
-- `https://ariregister.rik.ee/eng/company-registration-portal`
+- `https://ariregister.rik.ee/eng/application/start`
 
 Confirm 200 and current procedure content. Note the actual section headings.
+
+(Note: the previous spec URL `https://ariregister.rik.ee/eng/company-registration-portal`
+returns 404; the canonical establishment path is `/eng/application/start`. The legacy
+`https://ettevotjaportaal.rik.ee/index.py?chlang=eng` is no longer reachable — the
+e-Business Register has subsumed the entrepreneur portal flow. The name-search URL
+`/eng/name-search` is also 404 — use `/eng/name_query`. The marketplace URL
+`https://www.e-resident.gov.ee/marketplace/` 301-redirects to
+`https://marketplace.e-resident.gov.ee/`.)
 
 - [ ] **Step 2: Create `skills/ou-open-e-resident/SKILL.md`**
 
@@ -1279,7 +1287,7 @@ metadata:
   difficulty: "self-serve"
   auth_required: "e-residency-card"
   authoritative_lang: "et"
-  freshness_sources: "https://www.e-resident.gov.ee/start-a-company/|https://ariregister.rik.ee/eng/company-registration-portal"
+  freshness_sources: "https://www.e-resident.gov.ee/start-a-company/|https://ariregister.rik.ee/eng/application/start"
   last_verified: "2026-05-03"
   version: "0.1.0"
 ---
@@ -1295,7 +1303,7 @@ This is AI-generated procedural guidance, not legal, tax, or accounting advice. 
 **Before quoting any state fee, share capital minimum, processing time, or step, fetch the current pages at:**
 
 - `https://www.e-resident.gov.ee/start-a-company/`
-- `https://ariregister.rik.ee/eng/company-registration-portal`
+- `https://ariregister.rik.ee/eng/application/start`
 
 **Numbers and procedural steps in this skill body are illustrative — always replace them with what the live pages currently say.**
 
@@ -1305,13 +1313,13 @@ Ask the user, in order:
 
 1. **Do you already hold an active e-Residency digital ID card?** If no, route them to the e-Residency application flow first — this skill assumes the card is in hand.
 2. **Do you have a card reader and the latest DigiDoc4 client installed?** Smart-ID and Mobile-ID are not options here; OÜ registration requires the e-Residency ID-card and a hardware reader.
-3. **Have you chosen a contact person and legal address in Estonia?** Most e-Residents use a third-party service provider for both. Mention that this is a service marketplace topic, not a state matter — the user picks a provider from `https://www.e-resident.gov.ee/marketplace/`.
-4. **What's the company's intended name?** Mention that name availability can be checked at `https://ariregister.rik.ee/eng/name-search`.
+3. **Have you chosen a contact person and legal address in Estonia?** Most e-Residents use a third-party service provider for both. Mention that this is a service marketplace topic, not a state matter — the user picks a provider from `https://marketplace.e-resident.gov.ee/`.
+4. **What's the company's intended name?** Mention that name availability can be checked at `https://ariregister.rik.ee/eng/name_query`.
 
 ## Step 2 — Walk through the Company Registration Portal procedure
 
 1. Fetch `https://www.e-resident.gov.ee/start-a-company/` and summarise the current procedure in 6–10 numbered steps, in the user's chosen language. Pay particular attention to the contributed share capital question (some founders defer payment, others pay up front), and the differences for sole vs. multiple founders.
-2. Fetch the relevant section on `https://ariregister.rik.ee/eng/company-registration-portal` and confirm the in-portal flow matches the description above.
+2. Fetch the relevant section on `https://ariregister.rik.ee/eng/application/start` and confirm the in-portal flow matches the description above.
 3. State the current state fee (from the live page, not memorised).
 4. State current processing time (from the live page).
 
@@ -1319,7 +1327,7 @@ Ask the user, in order:
 
 End procedural guidance with:
 
-> Now sign in to the **Company Registration Portal** at `https://ettevotjaportaal.rik.ee/index.py?chlang=eng` with your e-Residency ID-card via the DigiDoc4 client. Fill in the application, sign, and pay the state fee. RIK will email you when the company is approved (typically within a business day).
+> Now sign in to the **e-Business Register (e-Äriregister)** at `https://ariregister.rik.ee/eng/application/start` with your e-Residency ID-card via the DigiDoc4 client. Fill in the application, sign, and pay the state fee. RIK will email you when the company is approved (typically within a business day).
 
 ## Step 4 — After registration
 
@@ -1345,10 +1353,9 @@ All canonical URLs cited in this skill. The implementer must verify each URL ret
 | URL | Purpose | Last checked |
 |---|---|---|
 | https://www.e-resident.gov.ee/start-a-company/ | Procedure overview for e-Residents | 2026-05-03 |
-| https://ariregister.rik.ee/eng/company-registration-portal | Company Registration Portal info | 2026-05-03 |
-| https://ettevotjaportaal.rik.ee/index.py?chlang=eng | RIK Entrepreneur Portal sign-in | 2026-05-03 |
-| https://ariregister.rik.ee/eng/name-search | Company name availability check | 2026-05-03 |
-| https://www.e-resident.gov.ee/marketplace/ | Service-provider marketplace (contact person, accounting, etc.) | 2026-05-03 |
+| https://ariregister.rik.ee/eng/application/start | e-Business Register / Company Registration Portal — establishment of a new legal person | 2026-05-03 |
+| https://ariregister.rik.ee/eng/name_query | Company name availability check | 2026-05-03 |
+| https://marketplace.e-resident.gov.ee/ | Service-provider marketplace (contact person, accounting, etc.) | 2026-05-03 |
 
 If a URL changes or returns non-200, update this table and bump `last_verified` in `SKILL.md`.
 ```
