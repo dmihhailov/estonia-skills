@@ -28,6 +28,41 @@ skills:
     - https://ariregister.rik.ee/eng/application/start
     last_verified: '2026-05-03'
     version: 0.1.0
+- name: residence-registration
+  description: 'Walks a newcomer to Estonia (EU/EEA citizen, third-country national,
+    or
+
+    returning resident) through registering their place of residence in the
+
+    rahvastikuregister (population register). Use when the user mentions:
+
+    "register address Estonia", "rahvastikuregister", "kohalik omavalitsus",
+
+    "moving to Estonia", "place of residence", "elukoharegistreerimine".
+
+    Distinguishes between place-of-residence registration (for everyone) and
+
+    residence permits (for non-EU nationals). Always re-fetches current procedure
+
+    from eesti.ee and politsei.ee.'
+  metadata:
+    audience:
+    - expat-newcomer
+    - resident
+    life_event: arriving
+    service_domain: identity
+    cadence: one-off
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.eesti.ee/en
+    - https://www.politsei.ee/en/instructions/applying-for-a-residence-permit
+    last_verified: '2026-05-03'
+    version: 0.1.0
 - name: tax-filing-individual
   description: 'Walks an Estonian resident or citizen through filing the annual personal
 
