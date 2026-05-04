@@ -11,8 +11,8 @@ import yaml
 
 
 ROUTER_DIR_NAME = "estonia"
-LIST_FIELDS = {"audience", "auth_required"}
-PIPE_LIST_FIELDS = {"freshness_sources"}
+LIST_FIELDS_COMMA = {"audience", "auth_required"}
+LIST_FIELDS_PIPE = {"freshness_sources"}
 
 
 def _parse_frontmatter(skill_md: Path) -> dict:
@@ -32,9 +32,9 @@ def _parse_frontmatter(skill_md: Path) -> dict:
 def _normalize_metadata(metadata: dict) -> dict:
     out = {}
     for key, value in metadata.items():
-        if key in LIST_FIELDS and isinstance(value, str):
+        if key in LIST_FIELDS_COMMA and isinstance(value, str):
             out[key] = [item.strip() for item in value.split(",") if item.strip()]
-        elif key in PIPE_LIST_FIELDS and isinstance(value, str):
+        elif key in LIST_FIELDS_PIPE and isinstance(value, str):
             out[key] = [item.strip() for item in value.split("|") if item.strip()]
         else:
             out[key] = value

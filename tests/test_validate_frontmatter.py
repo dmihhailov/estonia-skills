@@ -65,3 +65,34 @@ def test_validate_rejects_non_semver_version():
     fm = _skill_with({"version": "v1"})
     with pytest.raises(ValidationError, match="version"):
         validate_skill(fm)
+
+
+def test_validate_accepts_yaml_list_audience():
+    """A contributor may write audience as a YAML-native list, not a comma string."""
+    fm = _skill_with({"audience": ["citizen", "resident"]})
+    validate_skill(fm)  # should not raise
+
+
+def test_validate_rejects_invalid_value_in_comma_list():
+    """Each item in a comma-separated list must independently be in the allowed set."""
+    fm = _skill_with({"auth_required": "smart-id,bogus"})
+    with pytest.raises(ValidationError, match="auth_required"):
+        validate_skill(fm)
+
+
+def test_validate_rejects_missing_top_level_field():
+    """Top-level fields (license, name, description, metadata) are also required."""
+    fm = _skill_with({})
+    del fm["license"]
+    with pytest.raises(ValidationError, match="license"):
+        validate_skill(fm)
+
+
+def test_parse_frontmatter_raises_on_malformed_yaml(tmp_path):
+    from validate_frontmatter import _parse_frontmatter
+
+    bad_skill = tmp_path / "SKILL.md"
+    bad_skill.write_text("---\nname: [unclosed\n---\n# body\n")
+
+    with pytest.raises(ValidationError, match="invalid YAML in frontmatter"):
+        _parse_frontmatter(bad_skill)

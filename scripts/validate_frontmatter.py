@@ -65,10 +65,14 @@ def validate_skill(fm: dict) -> None:
 
     for key, allowed in ALLOWED.items():
         value = metadata[key]
-        items = (
-            [v.strip() for v in value.split(",")] if key in LIST_FIELDS_COMMA
-            else [value]
-        )
+        if key in LIST_FIELDS_COMMA:
+            items = (
+                [v.strip() for v in value.split(",")]
+                if isinstance(value, str)
+                else list(value)
+            )
+        else:
+            items = [value]
         for item in items:
             if item not in allowed:
                 raise ValidationError(f"{key}: '{item}' not in allowed values {sorted(allowed)}")
@@ -86,6 +90,8 @@ def main(skills_dir: Path) -> int:
             validate_skill(_parse_frontmatter(skill_md))
         except ValidationError as exc:
             failures.append(f"{skill_md}: {exc}")
+        except Exception as exc:
+            failures.append(f"{skill_md}: unexpected {type(exc).__name__}: {exc}")
 
     for failure in failures:
         print(f"FAIL: {failure}", file=sys.stderr)
