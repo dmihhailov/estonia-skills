@@ -1,1 +1,31 @@
-skills: []
+skills:
+- name: tax-filing-individual
+  description: 'Walks an Estonian resident or citizen through filing the annual personal
+
+    income tax declaration (tuludeklaratsioon) via e-MTA. Use when the user
+
+    mentions: "tax return", "tuludeklaratsioon", "annual taxes", "MTA", "EMTA",
+
+    "tax filing for individuals", "how much do I owe in taxes", or "when am I
+
+    getting my tax refund". Always re-fetches current tax-year rates and
+
+    deadlines from emta.ee — never quotes cached numbers.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    life_event: meta
+    service_domain: tax
+    cadence: annual
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.emta.ee/eraklient/tulu-deklareerimine
+    - https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad
+    last_verified: '2026-05-03'
+    version: 0.1.0
