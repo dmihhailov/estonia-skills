@@ -5,7 +5,6 @@ router directory itself, and writes a sorted list of skill records to the
 output file. Run from repo root: python scripts/build_index.py
 """
 
-import sys
 from pathlib import Path
 
 import yaml
@@ -17,13 +16,17 @@ PIPE_LIST_FIELDS = {"freshness_sources"}
 
 
 def _parse_frontmatter(skill_md: Path) -> dict:
-    text = skill_md.read_text(encoding="utf-8")
+    # utf-8-sig silently strips a leading UTF-8 BOM if present.
+    text = skill_md.read_text(encoding="utf-8-sig")
     if not text.startswith("---"):
         raise ValueError(f"{skill_md}: missing YAML frontmatter")
     parts = text.split("---", 2)
     if len(parts) < 3:
         raise ValueError(f"{skill_md}: malformed frontmatter")
-    return yaml.safe_load(parts[1]) or {}
+    try:
+        return yaml.safe_load(parts[1]) or {}
+    except yaml.YAMLError as exc:
+        raise ValueError(f"{skill_md}: invalid YAML in frontmatter: {exc}") from exc
 
 
 def _normalize_metadata(metadata: dict) -> dict:
@@ -47,8 +50,12 @@ def build_index(skills_dir: Path, output: Path) -> None:
         if not skill_md.exists():
             continue
         fm = _parse_frontmatter(skill_md)
+        try:
+            name = fm["name"]
+        except KeyError:
+            raise ValueError(f"{skill_md}: missing required 'name' field in frontmatter") from None
         entries.append({
-            "name": fm["name"],
+            "name": name,
             "description": fm.get("description", "").strip(),
             "metadata": _normalize_metadata(fm.get("metadata", {})),
         })

@@ -75,3 +75,14 @@ def test_build_index_raises_on_missing_frontmatter(tmp_path):
 
     with pytest.raises(ValueError, match="missing YAML frontmatter"):
         build_index(tmp_path / "skills", output)
+
+
+def test_build_index_raises_on_malformed_yaml(tmp_path):
+    bad_skill = tmp_path / "skills" / "broken" / "SKILL.md"
+    bad_skill.parent.mkdir(parents=True)
+    # Unclosed bracket → invalid YAML
+    bad_skill.write_text("---\nname: [unclosed\n---\n# body\n")
+    output = tmp_path / "INDEX.yaml"
+
+    with pytest.raises(ValueError, match="invalid YAML in frontmatter"):
+        build_index(tmp_path / "skills", output)
