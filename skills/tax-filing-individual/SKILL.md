@@ -16,7 +16,7 @@ metadata:
   difficulty: "self-serve"
   auth_required: "smart-id,mobile-id,id-card"
   authoritative_lang: "et"
-  freshness_sources: "https://www.emta.ee/eraklient/tulu-deklareerimine|https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad"
+  freshness_sources: "https://www.emta.ee/eraklient/tulu-deklareerimine|https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad"
   last_verified: "2026-05-03"
   version: "0.1.0"
 ---
@@ -32,7 +32,7 @@ This is AI-generated procedural guidance, not tax advice. Always verify against 
 **Before quoting any tax rate, threshold, deadline, or fee, fetch the current pages at:**
 
 - `https://www.emta.ee/eraklient/tulu-deklareerimine`
-- `https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad`
+- `https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad`
 
 **Do not quote any number or date from this skill body.** Numbers below (if any) are illustrative only — always replace them with what the live pages currently say.
 

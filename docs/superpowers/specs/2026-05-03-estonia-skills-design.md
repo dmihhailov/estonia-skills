@@ -161,7 +161,7 @@ metadata:
   difficulty: "self-serve"
   auth_required: "smart-id,mobile-id,id-card"
   authoritative_lang: "et"
-  freshness_sources: "https://www.emta.ee/eraklient/tulu-deklareerimine|https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad"
+  freshness_sources: "https://www.emta.ee/eraklient/tulu-deklareerimine|https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad"
   last_verified: "2026-05-03"
   version: "1.0.0"
 ---
@@ -192,7 +192,7 @@ The URLs below are illustrative starting points, not verified canonical paths. T
 
 | Skill directory | Audience tags | `freshness_sources` (illustrative) | Auth seam |
 |---|---|---|---|
-| `tax-filing-individual` | `citizen,resident` | `emta.ee/eraklient/tulu-deklareerimine`, `emta.ee/eraklient/tulu-deklareerimine/maksumaarad` | "Now log in to e-MTA with your Smart-ID / Mobile-ID / ID-card and review the pre-filled return." |
+| `tax-filing-individual` | `citizen,resident` | `emta.ee/eraklient/tulu-deklareerimine`, `emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad` | "Now log in to e-MTA with your Smart-ID / Mobile-ID / ID-card and review the pre-filled return." |
 | `ou-open-e-resident` | `e-resident,non-resident-founder` | `e-resident.gov.ee/start-a-company`, `ariregister.rik.ee/eng/company-registration-portal` | "Now sign in to the Company Registration Portal with your e-Residency card to file the application." |
 | `residence-registration` | `expat-newcomer,resident` | `eesti.ee/en/family-and-relationships/registering-residence`, relevant subset of `politsei.ee/en/instructions` for residence permits | "Submit at rahvastikuregister.ee with your eID, or visit your local council in person." |
 

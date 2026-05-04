@@ -5,7 +5,7 @@ All canonical URLs cited in this skill. The implementer must verify each URL ret
 | URL | Purpose | Last checked |
 |---|---|---|
 | https://www.emta.ee/eraklient/tulu-deklareerimine | Procedure overview | 2026-05-03 |
-| https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad | Current tax rates and thresholds | 2026-05-03 |
+| https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad | Current tax rates and thresholds | 2026-05-03 |
 | https://maasikas.emta.ee/oma_ee/login | e-MTA self-service login | 2026-05-03 |
 | https://www.emta.ee/eraklient/tulu-deklareerimine/krüptovara | Cryptocurrency gains rules | 2026-05-03 |
 

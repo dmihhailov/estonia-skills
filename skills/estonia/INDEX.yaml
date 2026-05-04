@@ -26,6 +26,6 @@ skills:
     authoritative_lang: et
     freshness_sources:
     - https://www.emta.ee/eraklient/tulu-deklareerimine
-    - https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad
+    - https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad
     last_verified: '2026-05-03'
     version: 0.1.0

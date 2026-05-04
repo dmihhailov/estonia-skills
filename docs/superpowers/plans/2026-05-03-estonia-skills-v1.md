@@ -1120,7 +1120,7 @@ This task requires fetching authoritative emta.ee pages to verify URLs and extra
 
 Use WebFetch (or browser) on:
 - `https://www.emta.ee/eraklient/tulu-deklareerimine`
-- `https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad`
+- `https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad`
 
 Confirm both return 200 and contain content about personal income tax declaration. Note the section headings present on each page (you'll cite them in the body). If a URL has changed, find the current canonical path.
 
@@ -1145,7 +1145,7 @@ metadata:
   difficulty: "self-serve"
   auth_required: "smart-id,mobile-id,id-card"
   authoritative_lang: "et"
-  freshness_sources: "https://www.emta.ee/eraklient/tulu-deklareerimine|https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad"
+  freshness_sources: "https://www.emta.ee/eraklient/tulu-deklareerimine|https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad"
   last_verified: "2026-05-03"
   version: "0.1.0"
 ---
@@ -1161,7 +1161,7 @@ This is AI-generated procedural guidance, not tax advice. Always verify against 
 **Before quoting any tax rate, threshold, deadline, or fee, fetch the current pages at:**
 
 - `https://www.emta.ee/eraklient/tulu-deklareerimine`
-- `https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad`
+- `https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad`
 
 **Do not quote any number or date from this skill body.** Numbers below (if any) are illustrative only — always replace them with what the live pages currently say.
 
@@ -1213,7 +1213,7 @@ All canonical URLs cited in this skill. The implementer must verify each URL ret
 | URL | Purpose | Last checked |
 |---|---|---|
 | https://www.emta.ee/eraklient/tulu-deklareerimine | Procedure overview | 2026-05-03 |
-| https://www.emta.ee/eraklient/tulu-deklareerimine/maksumaarad | Current tax rates and thresholds | 2026-05-03 |
+| https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad | Current tax rates and thresholds | 2026-05-03 |
 | https://maasikas.emta.ee/oma_ee/login | e-MTA self-service login | 2026-05-03 |
 | https://www.emta.ee/eraklient/tulu-deklareerimine/krüptovara | Cryptocurrency gains rules | 2026-05-03 |
 
