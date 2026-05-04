@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "description": "Modular Claude skills for Estonian bureaucracy — taxes, OÜ, residence, identity",
   "license": "MIT",
-  "homepage": "https://github.com/dmitrim/estonia-skills",
-  "repository": "https://github.com/dmitrim/estonia-skills",
+  "homepage": "https://github.com/dmihhailov/estonia-skills",
+  "repository": "https://github.com/dmihhailov/estonia-skills",
   "keywords": ["estonia", "civic", "bureaucracy", "tax", "e-residency"],
   "skills": "./skills/"
 }

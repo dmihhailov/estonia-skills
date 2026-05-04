@@ -7,12 +7,10 @@ Modular [Claude](https://claude.ai) skills for Estonian bureaucracy — taxes, O
 ## Install (Claude Code)
 
 ```
-/plugin marketplace add dmitrim/estonia-skills
+/plugin marketplace add dmihhailov/estonia-skills
 /plugin install estonia-skills@estonia-skills
 /reload-plugins
 ```
-
-(Replace `dmitrim` with the actual GitHub owner.)
 
 After install, ask Claude things like:
 
