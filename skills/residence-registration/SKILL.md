@@ -42,7 +42,7 @@ The eesti.ee state portal is a single-page application whose specific paths cann
 
 Clarify with the user which they need:
 
-1. **Place-of-residence registration** (`elukoharegistreerimine`) — recording the user's address in the population register. Required for everyone living in Estonia for >3 months, regardless of citizenship. Free. Self-service.
+1. **Place-of-residence registration** (`elukoharegistreerimine`) — recording the user's address in the population register. Required for everyone living in Estonia for >3 months, regardless of citizenship. Typically free; verify the current fee on the live eesti.ee page. Self-service.
 2. **Residence permit** — only for non-EU/non-EEA nationals who need legal authorisation to reside. Issued by PPA. Has fees, document requirements, and processing time. Different procedure entirely.
 
 EU/EEA citizens need #1 only (plus a "right of residence" registration at PPA after 3 months — fetch the current details from politsei.ee).

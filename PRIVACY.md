@@ -33,4 +33,4 @@ If a contributor has a use case that involves any kind of PII handling, the answ
 
 ## 4. Reporting
 
-If you spot a privacy violation in this repository, open an issue tagged `privacy` or — if it's sensitive — email the owner listed in `marketplace.json`. PRs that remove violations will be merged immediately.
+If you spot a privacy violation in this repository, open an issue tagged `privacy`. For sensitive disclosures, use GitHub's [private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability) on this repo. PRs that remove violations will be merged immediately.

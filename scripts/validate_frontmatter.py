@@ -84,8 +84,9 @@ def validate_skill(fm: dict) -> None:
 
 
 def main(skills_dir: Path) -> int:
+    skill_files = sorted(skills_dir.glob("*/SKILL.md"))
     failures: list[str] = []
-    for skill_md in sorted(skills_dir.glob("*/SKILL.md")):
+    for skill_md in skill_files:
         try:
             validate_skill(_parse_frontmatter(skill_md))
         except ValidationError as exc:
@@ -97,7 +98,7 @@ def main(skills_dir: Path) -> int:
         print(f"FAIL: {failure}", file=sys.stderr)
     if failures:
         return 1
-    print(f"OK: validated {len(list(skills_dir.glob('*/SKILL.md')))} skill(s)")
+    print(f"OK: validated {len(skill_files)} skill(s)")
     return 0
 
 
