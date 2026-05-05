@@ -28,6 +28,45 @@ skills:
     - https://ariregister.rik.ee/eng/application/start
     last_verified: '2026-05-03'
     version: 0.1.0
+- name: parental-benefit-vanemahuvitis
+  description: 'Walks an Estonian resident or citizen through planning, calculating,
+    and
+
+    applying for parental benefit (vanemahüvitis) — the income-based benefit
+
+    paid by the Social Insurance Board to one parent on leave with a new child.
+
+    Use when the user mentions: "vanemahüvitis", "parental benefit", "parental
+
+    leave Estonia", "maternity benefit", "paternity benefit", "how much will
+
+    I get on parental leave", "split parental leave between parents". Always
+
+    re-fetches current rates and caps from sotsiaalkindlustusamet.ee — never
+
+    quotes cached numbers. Computes interactively from the user''s gross
+
+    salary; never asks for the user''s isikukood, account number, or salary
+
+    slips.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    life_event: family
+    service_domain: social
+    cadence: one-off
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://sotsiaalkindlustusamet.ee/perehuvitised-ja-muud-toetused/perehuvitiste-ulevaade
+    - https://sotsiaalkindlustusamet.ee/perehuvitised-ja-muud-toetused/perehuvitiste-ulevaade/vanemahuvitise-kalkulaator
+    last_verified: '2026-05-05'
+    version: 0.1.0
 - name: residence-registration
   description: 'Walks a newcomer to Estonia (EU/EEA citizen, third-country national,
     or
