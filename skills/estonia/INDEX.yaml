@@ -132,3 +132,42 @@ skills:
     - https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad
     last_verified: '2026-05-03'
     version: 0.1.0
+- name: vehicle-transfer
+  description: 'Walks an Estonian resident, citizen, or new arrival through buying
+    or
+
+    selling a road vehicle in Estonia: ownership transfer at the
+
+    Transpordiamet, mandatory traffic insurance, MOT status, and the
+
+    current car tax (automaks). Use when the user mentions: "transfer car",
+
+    "sell car Estonia", "buy car Estonia", "register vehicle", "automaks",
+
+    "Maanteamet", "Transpordiamet", "MOT booking", "OSAGO", "tehnoülevaatus".
+
+    Does live registration / insurance / MOT lookups via the public
+
+    registries; computes fees from current rates. Never asks for the
+
+    user''s isikukood or bank details.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    - expat-newcomer
+    life_event: vehicle
+    service_domain: identity
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://transpordiamet.ee/en/vehicle-ship-airplane/vehicle/registration-vehicle
+    - https://www.lkf.ee/et/kindlustusekehtivus
+    - https://www.emta.ee/eraklient/maksud-ja-tasumine/muud-maksud/mootorsoidukimaks
+    last_verified: '2026-05-05'
+    version: 0.1.0
