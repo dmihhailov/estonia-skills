@@ -67,6 +67,42 @@ skills:
     - https://sotsiaalkindlustusamet.ee/perehuvitised-ja-muud-toetused/perehuvitiste-ulevaade/vanemahuvitise-kalkulaator
     last_verified: '2026-05-05'
     version: 0.1.0
+- name: passport-or-idcard-renewal
+  description: 'Walks an Estonian citizen (or first-time applicant turning 15) through
+
+    applying for or renewing a passport, an ID-card, or both at the same
+
+    time. Use when the user mentions: "renew passport", "new passport",
+
+    "renew ID-card", "ID-card expired", "passport application Estonia",
+
+    "PPA appointment", "broneering.politsei.ee". Verifies eligibility,
+
+    computes current fees, checks photo requirements, looks up booking
+
+    availability at PPA service points, and finds the nearest Estonian
+
+    embassy if applying from abroad. Never asks for the user''s isikukood
+
+    or document numbers.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    - expat-newcomer
+    life_event: meta
+    service_domain: identity
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.politsei.ee/en/instructions/estonian-passport-for-an-adult
+    - https://www.politsei.ee/en/instructions/applying-for-an-id-card-for-an-adult
+    - https://www.politsei.ee/en/requirement-and-instructions-for-the-document-photo
+    last_verified: '2026-05-05'
+    version: 0.1.0
 - name: residence-registration
   description: 'Walks a newcomer to Estonia (EU/EEA citizen, third-country national,
     or
