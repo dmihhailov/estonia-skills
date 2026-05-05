@@ -1,4 +1,41 @@
 skills:
+- name: driving-licence
+  description: 'Walks a citizen, resident, or new arrival through getting an Estonian
+
+    driving licence. Covers first-time issuance, renewal, and exchange of
+
+    a foreign driving licence (EU/EEA / bilateral-agreement countries /
+
+    other). Use when the user mentions: "driving licence Estonia",
+
+    "Estonian driving licence", "exchange foreign licence", "renew
+
+    driving licence", "B-category", "Transpordiamet driving school",
+
+    "driver''s licence Estonia". Determines the right path via decision
+
+    tree, lists current document requirements, surfaces approved driving
+
+    schools, and computes fees from the live page.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    - expat-newcomer
+    life_event: vehicle
+    service_domain: identity
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.transpordiamet.ee/juhiluba
+    - https://www.transpordiamet.ee/valisriigi-juhiluba
+    last_verified: '2026-05-05'
+    version: 0.1.0
 - name: ou-open-e-resident
   description: 'Walks an e-Resident through opening a private limited company (osaühing,
     OÜ)
@@ -27,6 +64,81 @@ skills:
     - https://www.e-resident.gov.ee/start-a-company/
     - https://ariregister.rik.ee/eng/application/start
     last_verified: '2026-05-03'
+    version: 0.1.0
+- name: parental-benefit-vanemahuvitis
+  description: 'Walks an Estonian resident or citizen through planning, calculating,
+    and
+
+    applying for parental benefit (vanemahüvitis) — the income-based benefit
+
+    paid by the Social Insurance Board to one parent on leave with a new child.
+
+    Use when the user mentions: "vanemahüvitis", "parental benefit", "parental
+
+    leave Estonia", "maternity benefit", "paternity benefit", "how much will
+
+    I get on parental leave", "split parental leave between parents". Always
+
+    re-fetches current rates and caps from sotsiaalkindlustusamet.ee — never
+
+    quotes cached numbers. Computes interactively from the user''s gross
+
+    salary; never asks for the user''s isikukood, account number, or salary
+
+    slips.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    life_event: family
+    service_domain: social
+    cadence: one-off
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://sotsiaalkindlustusamet.ee/perehuvitised-ja-muud-toetused/perehuvitiste-ulevaade
+    - https://sotsiaalkindlustusamet.ee/perehuvitised-ja-muud-toetused/perehuvitiste-ulevaade/vanemahuvitise-kalkulaator
+    last_verified: '2026-05-05'
+    version: 0.1.0
+- name: passport-or-idcard-renewal
+  description: 'Walks an Estonian citizen (or first-time applicant turning 15) through
+
+    applying for or renewing a passport, an ID-card, or both at the same
+
+    time. Use when the user mentions: "renew passport", "new passport",
+
+    "renew ID-card", "ID-card expired", "passport application Estonia",
+
+    "PPA appointment", "broneering.politsei.ee". Verifies eligibility,
+
+    computes current fees, checks photo requirements, looks up booking
+
+    availability at PPA service points, and finds the nearest Estonian
+
+    embassy if applying from abroad. Never asks for the user''s isikukood
+
+    or document numbers.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    - expat-newcomer
+    life_event: meta
+    service_domain: identity
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.politsei.ee/en/instructions/estonian-passport-for-an-adult
+    - https://www.politsei.ee/en/instructions/applying-for-an-id-card-for-an-adult
+    - https://www.politsei.ee/en/requirement-and-instructions-for-the-document-photo
+    last_verified: '2026-05-05'
     version: 0.1.0
 - name: residence-registration
   description: 'Walks a newcomer to Estonia (EU/EEA citizen, third-country national,
@@ -92,4 +204,82 @@ skills:
     - https://www.emta.ee/eraklient/tulu-deklareerimine
     - https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad
     last_verified: '2026-05-03'
+    version: 0.1.0
+- name: tootukassa-unemployment
+  description: 'Walks an Estonian resident or citizen who has lost or is losing
+
+    employment through registration with Eesti Töötukassa, eligibility
+
+    for unemployment-insurance benefit vs. unemployment allowance, and
+
+    job-search obligations. Use when the user mentions: "Töötukassa",
+
+    "unemployed Estonia", "register as unemployed", "unemployment benefit
+
+    Estonia", "lost my job Estonia", "töötukassa registration".
+
+    Determines eligibility live from tootukassa.ee rules, computes a
+
+    benefit-amount estimate from the user''s prior gross salary, and
+
+    surfaces the obligations that come with registration. Never asks
+
+    for the user''s isikukood or account number.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    life_event: employment
+    service_domain: social
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.tootukassa.ee/en/job-seekers/registration-unemployed
+    - https://www.tootukassa.ee/en/services/unemployment-insurance-benefit
+    - https://www.tootukassa.ee/en/services/unemployment-allowance
+    last_verified: '2026-05-05'
+    version: 0.1.0
+- name: vehicle-transfer
+  description: 'Walks an Estonian resident, citizen, or new arrival through buying
+    or
+
+    selling a road vehicle in Estonia: ownership transfer at the
+
+    Transpordiamet, mandatory traffic insurance, MOT status, and the
+
+    current car tax (automaks). Use when the user mentions: "transfer car",
+
+    "sell car Estonia", "buy car Estonia", "register vehicle", "automaks",
+
+    "Maanteamet", "Transpordiamet", "MOT booking", "OSAGO", "tehnoülevaatus".
+
+    Does live registration / insurance / MOT lookups via the public
+
+    registries; computes fees from current rates. Never asks for the
+
+    user''s isikukood or bank details.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    - expat-newcomer
+    life_event: vehicle
+    service_domain: identity
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://transpordiamet.ee/en/vehicle-ship-airplane/vehicle/registration-vehicle
+    - https://www.lkf.ee/et/kindlustusekehtivus
+    - https://www.emta.ee/eraklient/maksud-ja-tasumine/muud-maksud/mootorsoidukimaks
+    last_verified: '2026-05-05'
     version: 0.1.0

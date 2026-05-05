@@ -53,14 +53,14 @@ estonia-skills/
 - Modify: `skills/ou-open-e-resident/SKILL.md` (allowed-tools)
 - Modify: `skills/residence-registration/SKILL.md` (allowed-tools)
 
-The v0.2 skills need transport (Maanteamet successor `transpordiamet.ee`), insurance (`lkf.ee`), and booking-system (`broneeri.politsei.ee`) domains; plus `tootukassa.ee` self-service subdomains. Adding them to the canonical TES, then updating every skill's `allowed-tools` block to match.
+The v0.2 skills need transport (Maanteamet successor `transpordiamet.ee`), insurance (`lkf.ee`), and booking-system (`broneering.politsei.ee`) domains; plus `tootukassa.ee` self-service subdomains. Adding them to the canonical TES, then updating every skill's `allowed-tools` block to match.
 
 - [ ] **Step 1: Verify each new domain returns 200 via WebFetch**
 
 Run from repo root:
 ```bash
 . .venv/bin/activate
-for d in www.transpordiamet.ee transpordiamet.ee www.maanteamet.ee maanteamet.ee www.lkf.ee lkf.ee broneeri.politsei.ee eesti.tootukassa.ee minu.tootukassa.ee; do
+for d in www.transpordiamet.ee transpordiamet.ee www.maanteamet.ee maanteamet.ee www.lkf.ee lkf.ee broneering.politsei.ee; do
   echo "=== $d ==="
   curl -sI "https://$d" | head -3
 done
@@ -78,10 +78,10 @@ allowed-tools: >-
   WebFetch(domain:eesti.ee) WebFetch(domain:www.eesti.ee)
   WebFetch(domain:riigiteataja.ee) WebFetch(domain:www.riigiteataja.ee)
   WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) WebFetch(domain:maasikas.emta.ee)
-  WebFetch(domain:politsei.ee) WebFetch(domain:www.politsei.ee) WebFetch(domain:broneeri.politsei.ee)
+  WebFetch(domain:politsei.ee) WebFetch(domain:www.politsei.ee) WebFetch(domain:broneering.politsei.ee)
   WebFetch(domain:ariregister.rik.ee) WebFetch(domain:ettevotjaportaal.rik.ee) WebFetch(domain:avaandmed.ariregister.rik.ee)
   WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee)
-  WebFetch(domain:sotsiaalkindlustusamet.ee) WebFetch(domain:tootukassa.ee) WebFetch(domain:eesti.tootukassa.ee) WebFetch(domain:minu.tootukassa.ee) WebFetch(domain:tervisekassa.ee) WebFetch(domain:terviseamet.ee)
+  WebFetch(domain:sotsiaalkindlustusamet.ee) WebFetch(domain:tootukassa.ee) WebFetch(domain:tervisekassa.ee) WebFetch(domain:terviseamet.ee)
   WebFetch(domain:transpordiamet.ee) WebFetch(domain:www.transpordiamet.ee) WebFetch(domain:maanteamet.ee) WebFetch(domain:www.maanteamet.ee) WebFetch(domain:lkf.ee) WebFetch(domain:www.lkf.ee)
   WebFetch(domain:tallinn.ee) WebFetch(domain:www.tallinn.ee) WebFetch(domain:tartu.ee) WebFetch(domain:www.tartu.ee) WebFetch(domain:parnu.ee) WebFetch(domain:www.parnu.ee) WebFetch(domain:narva.ee) WebFetch(domain:www.narva.ee)
   WebFetch(domain:id.ee) WebFetch(domain:www.id.ee) WebFetch(domain:smart-id.com) WebFetch(domain:www.smart-id.com) WebFetch(domain:sk.ee) WebFetch(domain:www.sk.ee)
@@ -96,12 +96,12 @@ allowed-tools: >-
 Add three new rows to the existing "What's in the list, by category" table, between the "Police / identity (PPA)" row and the "Business registry (RIK)" row, and after the "Major city portals" row. Use Edit:
 
 ```markdown
-| Police / identity (PPA) | `politsei.ee`, `broneeri.politsei.ee` |
+| Police / identity (PPA) | `politsei.ee`, `broneering.politsei.ee` |
 ```
 (replaces the old `politsei.ee` row — the booking subsystem is on a separate subdomain that needs its own allowlist entry)
 
 ```markdown
-| Social / health | `sotsiaalkindlustusamet.ee`, `tootukassa.ee`, `eesti.tootukassa.ee`, `minu.tootukassa.ee`, `tervisekassa.ee`, `terviseamet.ee` |
+| Social / health | `sotsiaalkindlustusamet.ee`, `tootukassa.ee`, `tervisekassa.ee`, `terviseamet.ee` |
 ```
 (replaces the old social/health row)
 
@@ -117,7 +117,7 @@ Add the new WebFetch domains to the `permissions.allow` array. Use Edit; locate 
 
 After `"WebFetch(domain:www.politsei.ee)"`:
 ```json
-      "WebFetch(domain:broneeri.politsei.ee)",
+      "WebFetch(domain:broneering.politsei.ee)",
 ```
 
 After `"WebFetch(domain:andmed.stat.ee)"`:
@@ -128,8 +128,6 @@ After `"WebFetch(domain:andmed.stat.ee)"`:
       "WebFetch(domain:www.maanteamet.ee)",
       "WebFetch(domain:lkf.ee)",
       "WebFetch(domain:www.lkf.ee)",
-      "WebFetch(domain:eesti.tootukassa.ee)",
-      "WebFetch(domain:minu.tootukassa.ee)",
       "WebFetch(domain:tootukassa.ee)",
       "WebFetch(domain:sotsiaalkindlustusamet.ee)",
 ```
@@ -146,9 +144,8 @@ Four skills need updates: `skills/estonia/SKILL.md`, `skills/tax-filing-individu
 
 For each, use Edit to replace the existing `allowed-tools: >-\n  WebFetch(domain:eesti.ee) ...` YAML block with the new TES block from Step 2 above. The new block adds three groups of entries:
 
-1. `WebFetch(domain:broneeri.politsei.ee)` — added to the police row.
-2. `WebFetch(domain:eesti.tootukassa.ee) WebFetch(domain:minu.tootukassa.ee)` — added to the social/health row.
-3. A new transport row: `WebFetch(domain:transpordiamet.ee) WebFetch(domain:www.transpordiamet.ee) WebFetch(domain:maanteamet.ee) WebFetch(domain:www.maanteamet.ee) WebFetch(domain:lkf.ee) WebFetch(domain:www.lkf.ee)`.
+1. `WebFetch(domain:broneering.politsei.ee)` — added to the police row.
+2. A new transport row: `WebFetch(domain:transpordiamet.ee) WebFetch(domain:www.transpordiamet.ee) WebFetch(domain:maanteamet.ee) WebFetch(domain:www.maanteamet.ee) WebFetch(domain:lkf.ee) WebFetch(domain:www.lkf.ee)`.
 
 The fastest way to apply: copy the entire TES block from CONTRIBUTING.md (just edited in Step 2) and replace the entire block in each skill. The frontmatter still must end with `---`; do not remove that.
 
@@ -174,8 +171,8 @@ v0.2 introduces five citizens/residents skills that reach for new
 gov domains:
 - transpordiamet.ee + maanteamet.ee — vehicle and driving-licence
 - lkf.ee — traffic insurance lookups for vehicle skill
-- broneeri.politsei.ee — PPA appointment booking for passport/ID
-- eesti.tootukassa.ee + minu.tootukassa.ee — Töötukassa self-service
+- broneering.politsei.ee — PPA appointment booking for passport/ID
+- broneering.politsei.ee — PPA appointment booking (corrected from broneeri.politsei.ee)
 
 Adds them to the canonical Trusted Estonian Sources block and
 propagates to every existing skill's allowed-tools, plus the
@@ -489,7 +486,7 @@ Candidates:
 - `https://www.tootukassa.ee/en/services/registration-as-unemployed` — registration overview (English) — drill from the homepage if the deep link 404s
 - `https://www.tootukassa.ee/en/content/unemployment-insurance-benefit` — benefit eligibility and amount rules
 - `https://www.tootukassa.ee/en/content/unemployment-allowance` — allowance for those who don't qualify for unemployment-insurance benefit
-- `https://eesti.tootukassa.ee` — self-service portal homepage (the actual registration happens here)
+- `https://www.tootukassa.ee/iseteenindus` — self-service portal homepage (the actual registration happens here)
 
 Find the most-specific canonical URLs and use those.
 
@@ -576,7 +573,7 @@ Output the personalised checklist.
 - Loss of benefit if obligations are missed
 - Continued public health insurance during registration
 
-**Section 8: Auth seam.** "Now register at the Töötukassa self-service at https://eesti.tootukassa.ee using your Smart-ID, Mobile-ID, or ID-card. Submit the documents above. A consultant will be assigned within a working day. The benefit calculation in the portal is authoritative; the estimate above is for planning only."
+**Section 8: Auth seam.** "Now register at the Töötukassa self-service at https://www.tootukassa.ee/iseteenindus using your Smart-ID, Mobile-ID, or ID-card. Submit the documents above. A consultant will be assigned within a working day. The benefit calculation in the portal is authoritative; the estimate above is for planning only."
 
 **Section 9: Sources.** Pointer.
 
@@ -600,7 +597,7 @@ job loss. Pre-auth surface: eligibility decision tree
 (unemployment-insurance benefit vs. unemployment allowance),
 benefit-amount estimate from prior gross salary, document checklist,
 post-registration obligations summary. Auth seam at
-eesti.tootukassa.ee.
+www.tootukassa.ee/iseteenindus.
 
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 EOF
@@ -623,7 +620,7 @@ Candidates:
 - `https://www.politsei.ee/en/instructions/applying-for-a-passport` — passport renewal overview
 - `https://www.politsei.ee/en/instructions/applying-for-an-id-card` — ID-card renewal overview
 - `https://www.politsei.ee/en/instructions/photo-requirements` — photo specs (verify the actual canonical name)
-- `https://broneeri.politsei.ee` — appointment booking system (English language version may be at /en)
+- `https://broneering.politsei.ee` — appointment booking system (English language version may be at /en)
 - `https://www.politsei.ee/en/contact/foreign-missions` — Estonian embassies abroad (for users renewing from outside Estonia)
 
 Drill from politsei.ee/en if any deep link 404s.
@@ -638,7 +635,7 @@ description: |
   applying for or renewing a passport, an ID-card, or both at the same
   time. Use when the user mentions: "renew passport", "new passport",
   "renew ID-card", "ID-card expired", "passport application Estonia",
-  "PPA appointment", "broneeri.politsei.ee". Verifies eligibility,
+  "PPA appointment", "broneering.politsei.ee". Verifies eligibility,
   computes current fees, checks photo requirements, looks up booking
   availability at PPA service points, and finds the nearest Estonian
   embassy if applying from abroad. Never asks for the user's isikukood
@@ -697,7 +694,7 @@ Style reference: any v0.1 skill — this is form-filling-with-decision-tree patt
 
 Personalised total: based on user's choice (regular vs. expedited, just ID-card vs. just passport vs. both).
 
-**Section 7: Step 5 — Booking availability lookup.** WebFetch the broneeri.politsei.ee homepage. Parse: list of service points with their next-available appointment slot (if visible in the public listing). If only an interactive UI is exposed (and the public HTML doesn't show times), surface that the user needs to visit broneeri.politsei.ee directly to see live slots — but at minimum identify the nearest PPA service point to the user's city.
+**Section 7: Step 5 — Booking availability lookup.** WebFetch the broneering.politsei.ee homepage. Parse: list of service points with their next-available appointment slot (if visible in the public listing). If only an interactive UI is exposed (and the public HTML doesn't show times), surface that the user needs to visit broneering.politsei.ee directly to see live slots — but at minimum identify the nearest PPA service point to the user's city.
 
 **Section 8: Step 6 — If abroad, embassy lookup.** If the user said they're abroad, fetch the foreign-missions page and surface the nearest Estonian embassy in the user's country.
 
@@ -708,7 +705,7 @@ Personalised total: based on user's choice (regular vs. expedited, just ID-card 
 4. Application fee paid (or paid at the appointment — verify)
 5. Other documents per PPA: name change documents if any, etc.
 
-**Section 10: Auth seam.** "Now book your appointment at https://broneeri.politsei.ee using your ID-card (or visit in person without booking, where available). For renewal-only via e-service: log in to the PPA e-service at politsei.ee and submit the renewal application. For abroad: schedule with the embassy identified above."
+**Section 10: Auth seam.** "Now book your appointment at https://broneering.politsei.ee using your ID-card (or visit in person without booking, where available). For renewal-only via e-service: log in to the PPA e-service at politsei.ee and submit the renewal application. For abroad: schedule with the embassy identified above."
 
 **Section 11: Sources.** Pointer.
 
@@ -730,7 +727,7 @@ Add passport-or-idcard-renewal skill
 Citizens/residents v0.2: passport, ID-card, or both renewal flow. Agent
 checks eligibility, fetches current fees and processing times, verifies
 photo requirements, looks up PPA service-point booking availability via
-broneeri.politsei.ee, and finds the nearest Estonian embassy if the
+broneering.politsei.ee, and finds the nearest Estonian embassy if the
 user is abroad. Auth seam at PPA appointment booking / e-service.
 
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
