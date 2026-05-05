@@ -115,7 +115,51 @@ Plus one **top-level** field (sibling of `name`/`description`/`license`/`metadat
 
 | Field | Purpose |
 |---|---|
-| `allowed-tools` | Space-separated list of tools the skill is permitted to use. For skills that fetch live data, list each WebFetch domain explicitly: `WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) ...`. Without this, every fetch prompts the user for permission. List **every** domain that appears in `freshness_sources` plus any used in the body's procedural prose. **Add `WebSearch`** if your skill body might fall back to a general web search — e.g. trademark checks, finding canonical URLs on JS-heavy SPA gov portals where deep links can't be inferred. WebSearch is unscoped (no `domain:` qualifier) but bounded to read-only web queries. Prefer WebFetch over WebSearch when the source URL is known. **Anticipate likely sources, not only mandatory ones.** If your skill is about businesses, the agent will reasonably want to cross-check against `teatmik.ee` / `inforegister.ee` (third-party aggregators). If it's about a specific city, it'll want the city portal (`tallinn.ee`, `tartu.ee`, etc.). Allowlist these proactively so the agent doesn't get blocked mid-flow. |
+| `allowed-tools` | Space-separated list of tools the skill is permitted to use. **Use the canonical "Trusted Estonian Sources" block below** — copy it verbatim into every new skill. It covers the realistic universe of sources an Estonian-bureaucracy skill will reach for; doing it once per skill avoids the prompt-treadmill where each new skill discovers a new domain mid-test. |
+
+#### Canonical `allowed-tools` block — "Trusted Estonian Sources"
+
+Copy this verbatim into the frontmatter of every new skill:
+
+```yaml
+allowed-tools: >-
+  WebFetch(domain:eesti.ee) WebFetch(domain:www.eesti.ee)
+  WebFetch(domain:riigiteataja.ee) WebFetch(domain:www.riigiteataja.ee)
+  WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) WebFetch(domain:maasikas.emta.ee)
+  WebFetch(domain:politsei.ee) WebFetch(domain:www.politsei.ee)
+  WebFetch(domain:ariregister.rik.ee) WebFetch(domain:ettevotjaportaal.rik.ee) WebFetch(domain:avaandmed.ariregister.rik.ee)
+  WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee)
+  WebFetch(domain:sotsiaalkindlustusamet.ee) WebFetch(domain:tootukassa.ee) WebFetch(domain:tervisekassa.ee) WebFetch(domain:terviseamet.ee)
+  WebFetch(domain:tallinn.ee) WebFetch(domain:www.tallinn.ee) WebFetch(domain:tartu.ee) WebFetch(domain:www.tartu.ee) WebFetch(domain:parnu.ee) WebFetch(domain:www.parnu.ee) WebFetch(domain:narva.ee) WebFetch(domain:www.narva.ee)
+  WebFetch(domain:id.ee) WebFetch(domain:www.id.ee) WebFetch(domain:smart-id.com) WebFetch(domain:www.smart-id.com) WebFetch(domain:sk.ee) WebFetch(domain:www.sk.ee)
+  WebFetch(domain:andmed.stat.ee) WebFetch(domain:avaandmed.eesti.ee) WebFetch(domain:stat.ee) WebFetch(domain:www.stat.ee)
+  WebFetch(domain:maaamet.ee) WebFetch(domain:www.maaamet.ee) WebFetch(domain:geoportaal.maaamet.ee)
+  WebFetch(domain:teatmik.ee) WebFetch(domain:www.teatmik.ee) WebFetch(domain:inforegister.ee) WebFetch(domain:www.inforegister.ee) WebFetch(domain:e-krediidiinfo.ee) WebFetch(domain:www.e-krediidiinfo.ee) WebFetch(domain:krediidiinfo.ee) WebFetch(domain:creditinfo.ee)
+  WebSearch
+```
+
+**What's in the list, by category:**
+
+| Category | Domains |
+|---|---|
+| State portals | `eesti.ee`, `riigiteataja.ee` |
+| Tax (MTA) | `emta.ee`, `maasikas.emta.ee` |
+| Police / identity (PPA) | `politsei.ee` |
+| Business registry (RIK) | `ariregister.rik.ee`, `ettevotjaportaal.rik.ee`, `avaandmed.ariregister.rik.ee` |
+| e-Residency | `e-resident.gov.ee`, `marketplace.e-resident.gov.ee` |
+| Social / health | `sotsiaalkindlustusamet.ee`, `tootukassa.ee`, `tervisekassa.ee`, `terviseamet.ee` |
+| Major city portals | `tallinn.ee`, `tartu.ee`, `parnu.ee`, `narva.ee` |
+| eID infrastructure | `id.ee`, `smart-id.com`, `sk.ee` |
+| Statistics + open data | `stat.ee`, `andmed.stat.ee`, `avaandmed.eesti.ee` |
+| Land registry | `maaamet.ee`, `geoportaal.maaamet.ee` |
+| Business directories (third-party trusted) | `teatmik.ee`, `inforegister.ee`, `e-krediidiinfo.ee`, `krediidiinfo.ee`, `creditinfo.ee` |
+| Read-only web queries | `WebSearch` (unscoped) |
+
+**When to extend this list:**
+
+- A skill needs a domain not in the canonical list → propose adding it to TES rather than allowlisting it ad-hoc in one skill. The list grows monotonically and stays consistent across skills.
+- The same domain appearing in the canonical list and freshness_sources is intentional — they serve different purposes (allowlist permits the fetch; freshness_sources tells the skill body where to fetch from).
+- Don't add unrelated domains (e.g. random business websites, social media). The list is for governmental + civic-tech sources only.
 
 ### 3. Write the body
 
