@@ -1,4 +1,41 @@
 skills:
+- name: driving-licence
+  description: 'Walks a citizen, resident, or new arrival through getting an Estonian
+
+    driving licence. Covers first-time issuance, renewal, and exchange of
+
+    a foreign driving licence (EU/EEA / bilateral-agreement countries /
+
+    other). Use when the user mentions: "driving licence Estonia",
+
+    "Estonian driving licence", "exchange foreign licence", "renew
+
+    driving licence", "B-category", "Transpordiamet driving school",
+
+    "driver''s licence Estonia". Determines the right path via decision
+
+    tree, lists current document requirements, surfaces approved driving
+
+    schools, and computes fees from the live page.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    - expat-newcomer
+    life_event: vehicle
+    service_domain: identity
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.transpordiamet.ee/juhiluba
+    - https://www.transpordiamet.ee/valisriigi-juhiluba
+    last_verified: '2026-05-05'
+    version: 0.1.0
 - name: ou-open-e-resident
   description: 'Walks an e-Resident through opening a private limited company (osaühing,
     OÜ)
