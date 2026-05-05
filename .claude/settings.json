@@ -2,8 +2,6 @@
   "permissions": {
     "allow": [
       "Bash(curl -sI *)",
-      "Bash(curl -s http://localhost:* *)",
-      "Bash(curl -sI http://localhost:* *)",
       "Bash(mkdir -p *)",
       "Bash(git init *)",
       "Bash(git config user.email *)",
@@ -22,6 +20,8 @@
       "Bash(git stash)",
       "Bash(git stash pop)",
       "Bash(git stash push *)",
+      "Bash(. .venv/bin/activate && *)",
+      "Bash(source .venv/bin/activate && *)",
       "Bash(. .venv/bin/activate && pytest*)",
       "Bash(. .venv/bin/activate && pytest *)",
       "Bash(. .venv/bin/activate && python scripts/*)",
