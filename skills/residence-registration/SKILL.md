@@ -10,7 +10,7 @@ description: |
   residence permits (for non-EU nationals). Always re-fetches current procedure
   from eesti.ee and politsei.ee.
 license: MIT
-allowed-tools: WebFetch(domain:eesti.ee) WebFetch(domain:www.eesti.ee) WebFetch(domain:politsei.ee) WebFetch(domain:www.politsei.ee)
+allowed-tools: WebFetch(domain:eesti.ee) WebFetch(domain:www.eesti.ee) WebFetch(domain:politsei.ee) WebFetch(domain:www.politsei.ee) WebSearch
 metadata:
   audience: "expat-newcomer,resident"
   life_event: "arriving"

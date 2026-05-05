@@ -8,7 +8,7 @@ description: |
   as a non-resident". Always re-fetches the current procedure from
   e-resident.gov.ee — never quotes cached fees or share-capital minimums.
 license: MIT
-allowed-tools: WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee) WebFetch(domain:ariregister.rik.ee)
+allowed-tools: WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee) WebFetch(domain:ariregister.rik.ee) WebSearch
 metadata:
   audience: "e-resident,non-resident-founder"
   life_event: "starting-business"
@@ -50,12 +50,12 @@ Ask the user, in order:
 
 Once the user has a name in mind:
 
-1. **WebFetch** `https://ariregister.rik.ee/eng/name_query` (or the relevant search URL on the e-Business Register; if the canonical search-results URL has changed, fetch the search page and submit the query through the form's GET parameters).
-2. Submit the user's proposed name. Parse the result:
+1. **Prefer WebFetch over WebSearch.** The e-Business Register exposes its name search via a public URL; query it directly rather than searching the wider web for the company name. Try `https://ariregister.rik.ee/eng/name_query?name=<URL-encoded-name>` first. If that doesn't return useful results, fetch `https://ariregister.rik.ee/eng/name_query` (the form page) and inspect the form to determine the correct GET parameters, then re-fetch with those.
+2. Parse the result:
    - **Available** — confirm and move on.
    - **Conflict** (identical or confusingly-similar existing entity) — list the conflicting registrations and suggest variations: add `Eesti`, append `OÜ`/`Holdings`/`Group`, swap to a related word, etc. Re-check the variations until one is available.
    - **Restricted** (e.g., uses a reserved word like *bank*, *insurance*, *university*) — explain that names containing those words require additional approvals; suggest alternatives.
-3. Also flag obvious red flags before they hit the registry: trademarks (do a quick public web check), too generic to be enforceable, or a name that's actively confusing with a well-known competitor.
+3. **Then a quick trademark check.** WebSearch the name to catch obvious red flags before they hit the registry: existing trademarks, too generic to be enforceable, or a name that's actively confusing with a well-known competitor in the same line of business. This is a *secondary* check after the registry; don't skip the registry just because the WebSearch came up empty.
 
 The output of this step is a confirmed available name the user has greenlit.
 

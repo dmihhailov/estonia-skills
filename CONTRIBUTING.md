@@ -115,7 +115,7 @@ Plus one **top-level** field (sibling of `name`/`description`/`license`/`metadat
 
 | Field | Purpose |
 |---|---|
-| `allowed-tools` | Space-separated list of tools the skill is permitted to use. For skills that fetch live data, list each WebFetch domain explicitly: `WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) ...`. Without this, every fetch prompts the user for permission. List **every** domain that appears in `freshness_sources` plus any used in the body's procedural prose. |
+| `allowed-tools` | Space-separated list of tools the skill is permitted to use. For skills that fetch live data, list each WebFetch domain explicitly: `WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) ...`. Without this, every fetch prompts the user for permission. List **every** domain that appears in `freshness_sources` plus any used in the body's procedural prose. **Add `WebSearch`** if your skill body might fall back to a general web search — e.g. trademark checks, finding canonical URLs on JS-heavy SPA gov portals where deep links can't be inferred. WebSearch is unscoped (no `domain:` qualifier) but bounded to read-only web queries. Prefer WebFetch over WebSearch when the source URL is known. |
 
 ### 3. Write the body
 
