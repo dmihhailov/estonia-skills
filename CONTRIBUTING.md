@@ -130,7 +130,7 @@ allowed-tools: >-
   WebFetch(domain:ariregister.rik.ee) WebFetch(domain:ettevotjaportaal.rik.ee) WebFetch(domain:avaandmed.ariregister.rik.ee)
   WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee)
   WebFetch(domain:sotsiaalkindlustusamet.ee) WebFetch(domain:tootukassa.ee) WebFetch(domain:tervisekassa.ee) WebFetch(domain:terviseamet.ee)
-  WebFetch(domain:transpordiamet.ee) WebFetch(domain:www.transpordiamet.ee) WebFetch(domain:maanteamet.ee) WebFetch(domain:www.maanteamet.ee) WebFetch(domain:lkf.ee) WebFetch(domain:www.lkf.ee)
+  WebFetch(domain:transpordiamet.ee) WebFetch(domain:www.transpordiamet.ee) WebFetch(domain:maanteamet.ee) WebFetch(domain:www.maanteamet.ee) WebFetch(domain:lkf.ee) WebFetch(domain:www.lkf.ee) WebFetch(domain:eteenindus.mnt.ee)
   WebFetch(domain:tallinn.ee) WebFetch(domain:www.tallinn.ee) WebFetch(domain:tartu.ee) WebFetch(domain:www.tartu.ee) WebFetch(domain:parnu.ee) WebFetch(domain:www.parnu.ee) WebFetch(domain:narva.ee) WebFetch(domain:www.narva.ee)
   WebFetch(domain:id.ee) WebFetch(domain:www.id.ee) WebFetch(domain:smart-id.com) WebFetch(domain:www.smart-id.com) WebFetch(domain:sk.ee) WebFetch(domain:www.sk.ee)
   WebFetch(domain:andmed.stat.ee) WebFetch(domain:avaandmed.eesti.ee) WebFetch(domain:stat.ee) WebFetch(domain:www.stat.ee)
@@ -149,7 +149,7 @@ allowed-tools: >-
 | Business registry (RIK) | `ariregister.rik.ee`, `ettevotjaportaal.rik.ee`, `avaandmed.ariregister.rik.ee` |
 | e-Residency | `e-resident.gov.ee`, `marketplace.e-resident.gov.ee` |
 | Social / health | `sotsiaalkindlustusamet.ee`, `tootukassa.ee`, `tervisekassa.ee`, `terviseamet.ee` |
-| Transport / vehicles / insurance | `transpordiamet.ee` (Estonian Transport Administration), `maanteamet.ee` (legacy Road Administration redirect), `lkf.ee` (Traffic Insurance Fund) |
+| Transport / vehicles / insurance | `transpordiamet.ee` (Estonian Transport Administration), `maanteamet.ee` (legacy Road Administration redirect), `lkf.ee` (Traffic Insurance Fund), `eteenindus.mnt.ee` (Transport Administration e-services — MOT and vehicle history lookups) |
 | Major city portals | `tallinn.ee`, `tartu.ee`, `parnu.ee`, `narva.ee` |
 | eID infrastructure | `id.ee`, `smart-id.com`, `sk.ee` |
 | Statistics + open data | `stat.ee`, `andmed.stat.ee`, `avaandmed.eesti.ee` |

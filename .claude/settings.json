@@ -56,6 +56,7 @@
       "WebFetch(domain:www.maanteamet.ee)",
       "WebFetch(domain:lkf.ee)",
       "WebFetch(domain:www.lkf.ee)",
+      "WebFetch(domain:eteenindus.mnt.ee)",
       "WebFetch(domain:tootukassa.ee)",
       "WebFetch(domain:sotsiaalkindlustusamet.ee)",
       "WebFetch(domain:json.schemastore.org)",
