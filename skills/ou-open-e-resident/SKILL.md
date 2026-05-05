@@ -8,7 +8,7 @@ description: |
   as a non-resident". Always re-fetches the current procedure from
   e-resident.gov.ee — never quotes cached fees or share-capital minimums.
 license: MIT
-allowed-tools: WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee) WebFetch(domain:ariregister.rik.ee) WebSearch
+allowed-tools: WebFetch(domain:e-resident.gov.ee) WebFetch(domain:www.e-resident.gov.ee) WebFetch(domain:marketplace.e-resident.gov.ee) WebFetch(domain:ariregister.rik.ee) WebFetch(domain:teatmik.ee) WebFetch(domain:www.teatmik.ee) WebFetch(domain:inforegister.ee) WebFetch(domain:www.inforegister.ee) WebSearch
 metadata:
   audience: "e-resident,non-resident-founder"
   life_event: "starting-business"
