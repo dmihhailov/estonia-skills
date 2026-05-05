@@ -39,6 +39,12 @@ Copy the frontmatter shape from any existing skill (e.g. `skills/tax-filing-indi
 | `last_verified` | `YYYY-MM-DD` — today's date |
 | `version` | semver (start with `0.1.0`) |
 
+Plus one **top-level** field (sibling of `name`/`description`/`license`/`metadata`):
+
+| Field | Purpose |
+|---|---|
+| `allowed-tools` | Space-separated list of tools the skill is permitted to use. For skills that fetch live data, list each WebFetch domain explicitly: `WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) ...`. Without this, every fetch prompts the user for permission. List **every** domain that appears in `freshness_sources` plus any used in the body's procedural prose. |
+
 ### 3. Write the body
 
 Follow the standard structure:

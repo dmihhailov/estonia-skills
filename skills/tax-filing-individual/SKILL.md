@@ -8,6 +8,7 @@ description: |
   getting my tax refund". Always re-fetches current tax-year rates and
   deadlines from emta.ee — never quotes cached numbers.
 license: MIT
+allowed-tools: WebFetch(domain:emta.ee) WebFetch(domain:www.emta.ee) WebFetch(domain:maasikas.emta.ee)
 metadata:
   audience: "citizen,resident"
   life_event: "meta"
