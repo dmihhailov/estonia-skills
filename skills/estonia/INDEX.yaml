@@ -1,0 +1,95 @@
+skills:
+- name: ou-open-e-resident
+  description: 'Walks an e-Resident through opening a private limited company (osaühing,
+    OÜ)
+
+    remotely using the e-Residency digital ID. Use when the user mentions:
+
+    "open OÜ", "open Estonian company", "register OÜ", "e-Residency company",
+
+    "ariregister", "Company Registration Portal", "start a business in Estonia
+
+    as a non-resident". Always re-fetches the current procedure from
+
+    e-resident.gov.ee — never quotes cached fees or share-capital minimums.'
+  metadata:
+    audience:
+    - e-resident
+    - non-resident-founder
+    life_event: starting-business
+    service_domain: business
+    cadence: one-off
+    difficulty: self-serve
+    auth_required:
+    - e-residency-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.e-resident.gov.ee/start-a-company/
+    - https://ariregister.rik.ee/eng/application/start
+    last_verified: '2026-05-03'
+    version: 0.1.0
+- name: residence-registration
+  description: 'Walks a newcomer to Estonia (EU/EEA citizen, third-country national,
+    or
+
+    returning resident) through registering their place of residence in the
+
+    rahvastikuregister (population register). Use when the user mentions:
+
+    "register address Estonia", "rahvastikuregister", "kohalik omavalitsus",
+
+    "moving to Estonia", "place of residence", "elukoharegistreerimine".
+
+    Distinguishes between place-of-residence registration (for everyone) and
+
+    residence permits (for non-EU nationals). Always re-fetches current procedure
+
+    from eesti.ee and politsei.ee.'
+  metadata:
+    audience:
+    - expat-newcomer
+    - resident
+    life_event: arriving
+    service_domain: identity
+    cadence: one-off
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.eesti.ee/en
+    - https://www.politsei.ee/en/instructions/applying-for-a-residence-permit
+    last_verified: '2026-05-03'
+    version: 0.1.0
+- name: tax-filing-individual
+  description: 'Walks an Estonian resident or citizen through filing the annual personal
+
+    income tax declaration (tuludeklaratsioon) via e-MTA. Use when the user
+
+    mentions: "tax return", "tuludeklaratsioon", "annual taxes", "MTA", "EMTA",
+
+    "tax filing for individuals", "how much do I owe in taxes", or "when am I
+
+    getting my tax refund". Always re-fetches current tax-year rates and
+
+    deadlines from emta.ee — never quotes cached numbers.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    life_event: meta
+    service_domain: tax
+    cadence: annual
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.emta.ee/eraklient/tulu-deklareerimine
+    - https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad
+    last_verified: '2026-05-03'
+    version: 0.1.0

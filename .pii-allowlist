@@ -1,0 +1,8 @@
+# Synthetic / documentation-only values that should never trigger the PII check.
+# One Python regex per line. Lines starting with # are ignored.
+^12345678901$
+^EE000000000000000000$
+# Test fixtures: values used in tests/test_check_no_pii.py and the v1 plan to
+# exercise the scanner itself. Not real PII.
+^38001085718$
+^EE382200221020145685$
