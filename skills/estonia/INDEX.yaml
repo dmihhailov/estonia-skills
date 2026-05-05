@@ -132,6 +132,45 @@ skills:
     - https://www.emta.ee/eraklient/maksud-ja-tasumine/tulu-deklareerimine/maksumaarad
     last_verified: '2026-05-03'
     version: 0.1.0
+- name: tootukassa-unemployment
+  description: 'Walks an Estonian resident or citizen who has lost or is losing
+
+    employment through registration with Eesti Töötukassa, eligibility
+
+    for unemployment-insurance benefit vs. unemployment allowance, and
+
+    job-search obligations. Use when the user mentions: "Töötukassa",
+
+    "unemployed Estonia", "register as unemployed", "unemployment benefit
+
+    Estonia", "lost my job Estonia", "töötukassa registration".
+
+    Determines eligibility live from tootukassa.ee rules, computes a
+
+    benefit-amount estimate from the user''s prior gross salary, and
+
+    surfaces the obligations that come with registration. Never asks
+
+    for the user''s isikukood or account number.'
+  metadata:
+    audience:
+    - citizen
+    - resident
+    life_event: employment
+    service_domain: social
+    cadence: on-demand
+    difficulty: self-serve
+    auth_required:
+    - smart-id
+    - mobile-id
+    - id-card
+    authoritative_lang: et
+    freshness_sources:
+    - https://www.tootukassa.ee/en/job-seekers/registration-unemployed
+    - https://www.tootukassa.ee/en/services/unemployment-insurance-benefit
+    - https://www.tootukassa.ee/en/services/unemployment-allowance
+    last_verified: '2026-05-05'
+    version: 0.1.0
 - name: vehicle-transfer
   description: 'Walks an Estonian resident, citizen, or new arrival through buying
     or
