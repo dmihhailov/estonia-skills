@@ -8,6 +8,78 @@ Thanks for considering a contribution. This repo aims to cover Estonian bureaucr
 - **Audience-aware.** Tagged with one or more of `citizen`, `resident`, `e-resident`, `non-resident-founder`, `expat-newcomer`.
 - **Freshness-correct.** Body never quotes specific numbers (rates, fees, deadlines) — those are always re-fetched from the URLs in `freshness_sources` at runtime.
 - **Authentication-respecting.** Ends at the Estonian eID auth seam — does not transact on the user's behalf, does not request PII.
+- **Agentic.** *Does* as much as it can before the auth seam, instead of telling the user to go and do things manually. See the next section.
+
+## Designing agentic skills
+
+The default temptation when writing a skill is to tell the user "go visit X and click Y" for every step. That makes the skill a long instruction manual the user has to follow themselves. **Don't do that.** A good skill in this repo *takes the actions* it can take, and only hands off to the user for the parts that genuinely require it (eID authentication, signature, payment).
+
+### What the agent CAN do (no auth needed)
+
+| Capability | Examples |
+|---|---|
+| **Read public data** | WebFetch authoritative pages, parse the relevant section |
+| **Use public APIs / queries** | `ariregister.rik.ee/eng/name_query`, `marketplace.e-resident.gov.ee`, municipality directories, Riigi Teataja API |
+| **Compute** | Tax owed, share capital scenarios, eligibility decisions, deadline math |
+| **Draft documents** | Letters, articles of association, consent forms, checklists, application data the user pastes |
+| **Personalize** | Build a decision tree, surface only the subset relevant to *this* user's citizenship / residency / income mix |
+
+### What the agent CAN'T do (still hits the seam)
+
+- Authenticate to a gov portal as the user
+- Submit signed filings, pay state fees
+- Read the user's own data on a gov portal (their pre-filled tax return, their existing companies)
+- Hold or transmit PII
+
+### Hard constraints (preserved no matter how agentic the skill becomes)
+
+1. **Never ask the user to paste PII into chat.** No isikukood, no account numbers, no passport numbers, no ID-card numbers. The agent works with non-identifying inputs the user volunteers (gross salary figure, citizenship, address city — never the identifier itself). Enforced by `scripts/check_no_pii.py` and reviewed in PRs.
+2. **Submission stays user-side.** The agent prepares everything; the user clicks submit after eID authentication.
+3. **Numbers always re-fetched live.** Even when computing (e.g. tax math), fetch the rate from the source page first. Never hardcode a fee.
+4. **Disclaimer first.** Computed outputs ("you'll owe approximately €X") are estimates; the gov portal is authoritative. The disclaimer must say so.
+
+### Pattern templates
+
+If your skill involves… → consider…
+
+| If your skill involves… | Replace with… |
+|---|---|
+| "Visit page X" | WebFetch page X, extract and summarise the relevant section |
+| "Calculate Y" | Run the computation interactively; show your math step by step |
+| "Decide which form / permit / option fits" | Build a decision tree — ask the minimum questions, branch to the right answer |
+| "Write a letter from your landlord" | Generate the letter template inline (Estonian + EN), with placeholders filled from the user's answers |
+| "Look up Z" (name available, council for an address, etc.) | Query the public source via WebFetch and present the answer |
+| "Fill in the registration form" | Generate the form data the user pastes; don't make them re-derive each field |
+| "Verify the pre-filled return" | Generate a personalised checklist they tick off after login |
+
+### Anti-patterns to remove
+
+- ❌ "Please calculate your expected tax based on the rates above."
+  → ✅ "Tell me your income breakdown and I'll compute your expected tax."
+- ❌ "Visit the marketplace and pick a contact-person provider."
+  → ✅ "What kind of provider do you need? I'll surface 2–3 options that fit."
+- ❌ "Write a consent letter from the property owner."
+  → ✅ "Here's a consent letter template in Estonian and English; have the owner sign it."
+- ❌ "Decide which residence permit applies to you."
+  → ✅ "Three quick questions: are you here for work, study, or family? …"
+
+### Author checklist before opening a PR
+
+For every instruction in your skill body, ask:
+
+1. **Could the agent do this instead of telling the user?** If yes, replace.
+2. **If yes, can it be done without auth or PII?** If yes, do it. If no, the instruction stays — but make sure the agent has done everything possible up to that point.
+3. **Does the instruction defer a decision the agent could make?** If yes, build the decision tree.
+4. **Does the instruction defer a lookup the agent could do?** If yes, WebFetch.
+5. **Does the instruction defer a draft the agent could write?** If yes, draft it inline.
+
+A good v1 atomic skill in this repo has 60–80% of its body doing things, and 20–40% handing off at the auth seam. If your skill body is 90% "go do X yourself", it needs another pass.
+
+### Real examples in this repo
+
+- `tax-filing-individual` — interactive tax calculator + personalised verification checklist
+- `ou-open-e-resident` — live company-name search, share-capital scenario advisor, articles of association template generator
+- `residence-registration` — citizenship decision tree, local council finder, property-owner consent letter generator
 
 ## Adding a new skill (six steps)
 
